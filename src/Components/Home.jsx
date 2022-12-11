@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
+import { CartApi } from '../Context' 
+import { useContext } from 'react';
 import SingleProduct from './SingleProduct';
 const { faker } = require('@faker-js/faker');
 
 
-const Home = ({cart, setCart}) => {
+const Home = () => {
 
-    faker.seed(100)
+  faker.seed(100)
+  
+  const {cart, setCart} = useContext(CartApi)
+
   const productsArray = [...Array(21)].map(() => ({
       id: faker.datatype.uuid(),
       name: faker.commerce.productName(),
